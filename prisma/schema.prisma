@@ -1,0 +1,121 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// ---------------------------------------------------------------
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            Int
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+// Old model
+model User {
+  id            Int          @id @default(autoincrement())
+  email         String       @unique
+  name          String?
+  phoneNumber   String?
+  image         String?
+  emailVerified DateTime?
+  ratings       Rating[]
+  restaurants   Restaurant[]
+  accounts      Account[]
+  sessions      Session[]
+  orders        Order[]
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       Int
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// Old model
+model Restaurant {
+  id      Int      @id @default(autoincrement())
+  name    String
+  address String
+  user    User     @relation(fields: [UserId], references: [id])
+  UserId  Int
+  items   Item[]
+  ratings Rating[]
+  orders  Order[]
+}
+
+// Old model
+model Item {
+  id           Int         @id @default(autoincrement())
+  name         String
+  restaurant   Restaurant  @relation(fields: [restaurantId], references: [id])
+  restaurantId Int
+  active       Boolean     @default(true)
+  priceCents   Int
+  orderItems   OrderItem[]
+  estTime      Int
+}
+
+// Old model
+model Order {
+  id           Int         @id @default(autoincrement())
+  email        String
+  orderItems   OrderItem[]
+  gst          Int
+  deliveryFee  Int
+  status       String      @default("unpaid")
+  restaurant   Restaurant  @relation(fields: [restaurantId], references: [id])
+  restaurantId Int
+  user         User        @relation(fields: [userId], references: [id])
+  userId       Int
+}
+
+// Old model
+model OrderItem {
+  id       Int   @id @default(autoincrement())
+  order    Order @relation(fields: [orderId], references: [id])
+  orderId  Int
+  item     Item  @relation(fields: [itemId], references: [id])
+  itemId   Int
+  quantity Int
+}
+
+// Old model
+model Rating {
+  id           Int        @id @default(autoincrement())
+  user         User       @relation(fields: [userId], references: [id])
+  userId       Int
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  restaurantId Int
+  rating       Int
+}
