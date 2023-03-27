@@ -14,7 +14,10 @@ export default async function handler(req, res) {
         deliveryFee,
         email,
         userId,
-        restaurantId
+        restaurantId,
+        prepTime,
+        deliveryTime,
+        address
       } = req.body;
 
       deliveryFee = deliveryFee.price;
@@ -39,6 +42,9 @@ export default async function handler(req, res) {
           email,
           userId,
           restaurantId,
+          prepTime,
+          deliveryTime,
+          address
        
         }
       })

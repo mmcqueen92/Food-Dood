@@ -17,26 +17,47 @@ export default function StripePayment(props) {
   const finalCart = [...cart, gst, deliveryFee];
   const email = session.user.email;
   const userId = session.user.id;
-
   const restaurantId = cart[0].restaurantId
-
+  const address = props.address;
   let id;
+
+  console.log("cart: ", cart)
+
+  let estTimes = cart.map((item) => {
+    const estTime = item.estTime;
+    console.log("estTime: ", estTime)
+    return estTime;
+  });
+  let prepTime = 0;
+  estTimes.forEach(time => {
+    console.log("time: ", time)
+    prepTime += time;
+  })
+
+  const deliveryTime = 15;
+
+  console.log("prepTime: ", prepTime)
+
 
 
   const handleCheckout = async () => {
     if (session) {
-
+      
       const data = {
         cart,
         gst,
         deliveryFee,
         email,
         userId,
-        restaurantId
+        restaurantId,
+        prepTime,
+        deliveryTime,
+        address
       }
 
       const endpoint = "/api/orders/new";
 
+      // axios post to make new order
       await axios.post(endpoint, data)
         .then((res) => {
 
@@ -44,6 +65,7 @@ export default function StripePayment(props) {
 
           const newEndpoint = "api/order-items/new";
           const newData = { cart, id };
+          // axios post to make new order-items
           axios.post(newEndpoint, newData)
         })
 

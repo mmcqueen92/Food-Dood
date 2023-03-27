@@ -35,9 +35,9 @@ export default function AddNewRestaurant(props) {
   }
 
   return (
-    <div className="flex flex-col p-2">
+    <div className="flex flex-col p-2 bg-slate-200 rounded-md">
       <div className="flex flex-row justify-center">
-        This is a form to add a new restaurant
+        New Restaurant:
       </div>
       <form onSubmit={handleSubmit} action="/api/restaurants" method="POST">
 

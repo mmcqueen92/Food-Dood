@@ -3,7 +3,8 @@ import RestaurantActiveOrdersListItem from '../components/restaurant-active-orde
 
 // THIS IS A LIST OF MULTIPLE ORDERS
 export default function RestaurantActiveOrdersList(props) {
-const orders = props.orders;
+
+const orders = props.orders || []
 const items = props.items;
 
 

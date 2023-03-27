@@ -32,7 +32,6 @@ export async function getServerSideProps({ query }) {
   })
 
 
-
   return {
     props: {
       restaurant,
@@ -44,17 +43,17 @@ export async function getServerSideProps({ query }) {
 }
 
 export default function RestaurantDashboard(props) {
-  const session = useSession();
+  const { data: session } = useSession()
   const name = props.restaurant.name;
   const id = props.restaurant.id;
   const address = props.restaurant.address;
   const orders = props.orders;
   const items = props.items
-  console.log("orders: ", orders)
 
 
 
-  if (session.data.user.id === props.restaurant.UserId) {
+
+  if (session.user.id === props.restaurant.UserId) {
     return (
       <div className="flex flex-col items-center">
         <div className="flex flex-col items-center">
@@ -79,7 +78,7 @@ export default function RestaurantDashboard(props) {
 
 
         <div>
-          Active Orders section will go here<br></br>
+          Active Orders:<br></br>
           <RestaurantActiveOrdersList
             orders={orders}
             items={items}

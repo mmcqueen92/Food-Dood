@@ -2,35 +2,32 @@ import { prisma } from '../../../../server/db/client';
 
 
 export default async function handler(req, res) {
-  const userId = req.query.params[0];
   const { method } = req;
 
-
-
-
   switch (method) {
-    case 'GET':
+    case 'POST':
+
+      let {
+        restaurantId
+      } = req.body;
 
 
 
-
-      const user = await prisma.user.findUnique({
+      const restaurant = await prisma.restaurant.findUnique({
         where: {
-          id: parseInt(userId)
-        },
-        include: {
-          orders: true,
-          driverId: true,
+          id: restaurantId
         }
       })
 
-      res.status(201).json(user)
+      // console.log("inside find, items: ", items)
+
+      res.status(201).json(restaurant)
       prisma.$disconnect()
       break
 
 
     default:
-      res.setHeader('Allow', ['GET'])
+      res.setHeader('Allow', ['POST'])
       res.status(405).end(`Method ${method} Not Allowed`)
   }
 }

@@ -16,6 +16,11 @@ export async function getServerSideProps({ query }) {
     }
   });
 
+
+  order.createdAt = order.createdAt.toString()
+  order.updatedAt = order.updatedAt.toString()
+
+
   const orderItems = await prisma.orderItem.findMany({
     where: {
       orderId: parsed
@@ -40,7 +45,7 @@ export async function getServerSideProps({ query }) {
     props: {
       order,
       orderItems,
-      
+
     }
   }
 }
@@ -55,12 +60,12 @@ export default function Success(props) {
 
   useEffect(() => {
     const endpoint = "/api/items/find"
-    const data = {itemIds}
+    const data = { itemIds }
 
     axios.post(endpoint, data)
-    .then((res) => {
-      console.log("resserino: ", res)
-    })
+      .then((res) => {
+        console.log("resserino: ", res)
+      })
 
   }, [])
 

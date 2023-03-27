@@ -111,6 +111,9 @@ export default function UpdateRestaurant(props) {
   
             setNewItem("inactive")
             setItems(newState)
+            setNewItemName("")
+            setNewItemPrice("")
+            setNewItemTime("")
           })
       }
     }

@@ -2,35 +2,40 @@ import { prisma } from '../../../../server/db/client';
 
 
 export default async function handler(req, res) {
-  const userId = req.query.params[0];
   const { method } = req;
 
-
-
-
   switch (method) {
-    case 'GET':
+    case 'POST':
+
+      let {
+        id, status
+      } = req.body;
 
 
 
 
-      const user = await prisma.user.findUnique({
+
+
+      const order = await prisma.order.update({
         where: {
-          id: parseInt(userId)
+          id: id
         },
-        include: {
-          orders: true,
-          driverId: true,
+        data: {
+          status: status
+
         }
       })
 
-      res.status(201).json(user)
+
+
+      res.status(201).json(order)
       prisma.$disconnect()
       break
 
 
     default:
-      res.setHeader('Allow', ['GET'])
+      res.setHeader('Allow', ['POST'])
       res.status(405).end(`Method ${method} Not Allowed`)
   }
+
 }

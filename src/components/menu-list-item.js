@@ -11,6 +11,7 @@ export default function MenuListItem(props) {
   const name = props.name;
   const price = props.priceCents;
   const restaurantId = props.restaurantId;
+  const estTime = props.estTime;
 
   useEffect(() => {
     const inCart = cart.find((item) => item.id === id);
@@ -41,7 +42,7 @@ export default function MenuListItem(props) {
           }} className="border-2 border-green-800 rounded-md p-1">Remove from Cart</button>
           : <button onClick={() => {
 
-            addToCart({ id, name, price, itemQuantity, restaurantId })
+            addToCart({ id, name, price, itemQuantity, restaurantId, estTime })
            
           }} className="border-2 border-green-800 rounded-md p-1">Add to Cart</button>
       }
