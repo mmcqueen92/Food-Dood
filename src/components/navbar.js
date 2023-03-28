@@ -24,5 +24,3 @@ export default function Navbar() {
 
   )
 }
-
-{/* <div className="w-full bg-green-800">NAVBAR</div> */ }
