@@ -8,7 +8,7 @@ export default function LoginButton(props) {
 
     return (
       <div className="flex flex-row">
-        <div className="m-2 text-blue-800">
+        <div className="m-2 text-blue-800 p-2">
           Signed in as {session.user.email}
         </div>
         <button className="m-2 border-blue-700 border-2 bg-slate-200 text-blue-800 rounded-md p-1 hover:bg-blue-700 hover:text-slate-200">
@@ -23,11 +23,11 @@ export default function LoginButton(props) {
 
 
   return (
-    <div className="p-1">
-      <p className="m-2 text-blue-700">
+    <div className="p-1 flex flex-row">
+      <div className="m-2 text-blue-700 p-2">
       Not signed in
-      </p>
-      <button className="border-2 border-red-700 rounded-md p-1 m-2" onClick={() => signIn()}>Sign in</button>
+      </div>
+      <button className="border-2 border-blue-800 rounded-md p-1 m-2 bg-slate-200 text-blue-800 hover:bg-blue-700 hover:text-slate-200" onClick={() => signIn()}>Sign in</button>
     </div>
   )
 }
