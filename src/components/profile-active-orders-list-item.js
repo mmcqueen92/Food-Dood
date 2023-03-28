@@ -21,7 +21,7 @@ export default function ProfileActiveOrdersListItem(props) {
 
 
   return (
-    <div className="border-2 border-green-500 m-1 p-1 rounded-md">
+    <div className="border-2 border-blue-800 m-1 p-1 rounded-md bg-green-200">
       Order Id: {order.id} <br></br>
       Order email: {order.email} <br></br>
       Order status: {order.status} <br></br>

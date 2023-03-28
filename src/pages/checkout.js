@@ -64,38 +64,48 @@ export default function Checkout() {
 
 
   return (
-    <div>
-      <div>
-        <label
-          htmlFor="address"
-        >Address:</label>
-        <input
-          type="text"
-          placeholder="Enter an Address"
-          value={address}
-          onChange={(event) =>
-            setAddress(
-              event.target.value,
-            )
-          }
-          className="border-2 border-green-500 rounded-md m-2"
-          id="address"
-        ></input>
+    <div
+      className="flex flex-col items-center justify-center m-5"
+    >
+      <div
+      className="bg-green-500 m-2 p-2 rounded-md"
+      >
+        <div
+          className="bg-slate-200 rounded-md border-2 border-blue-800 m-2"
+        >
+          <label
+            htmlFor="address"
+            className="m-1"
+          >Address:</label>
+          <input
+            type="text"
+            placeholder="Enter an Address"
+            value={address}
+            onChange={(event) =>
+              setAddress(
+                event.target.value,
+              )
+            }
+            className="rounded-md m-1 p-1 border-2"
+            id="address"
+          ></input>
+        </div>
+        <CheckoutCart
+          items={cart}
+          totalItemPrice={totalItemPrice}
+          deliveryFee={deliveryFee}
+          customerGst={customerGst}
+          totalPriceDollars={totalPriceDollars}
+        ></CheckoutCart>
+        <StripePayment
+          user={user}
+          cart={cart}
+          gst={gstItem}
+          deliveryFee={deliveryFeeItem}
+          address={address}
+        ></StripePayment>
+
       </div>
-      <CheckoutCart
-        items={cart}
-        totalItemPrice={totalItemPrice}
-        deliveryFee={deliveryFee}
-        customerGst={customerGst}
-        totalPriceDollars={totalPriceDollars}
-      ></CheckoutCart>
-      <StripePayment
-        user={user}
-        cart={cart}
-        gst={gstItem}
-        deliveryFee={deliveryFeeItem}
-        address={address}
-      ></StripePayment>
     </div>
   )
 }

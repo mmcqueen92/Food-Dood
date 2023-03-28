@@ -6,15 +6,15 @@ export default function UnclaimedPaidOrdersList(props) {
   const userId = props.userId
 
   let components;
-  
+
   if (orders) {
     components = orders.map((order) => {
       return (
         <UnclaimedPaidOrdersListItem
-        key={order.id}
-        order={order}
-        driver={driver}
-        userId={userId}
+          key={order.id}
+          order={order}
+          driver={driver}
+          userId={userId}
         ></UnclaimedPaidOrdersListItem>
       )
     })
@@ -22,10 +22,10 @@ export default function UnclaimedPaidOrdersList(props) {
   }
 
   return (
-    <>
-    <h1>Unclaimed Paid Orders:</h1>
-    {components}
-    </>
+    <div className="m-2">
+      <h1 className="underline">Unclaimed Paid Orders:</h1>
+      {components}
+    </div>
   )
 
 }

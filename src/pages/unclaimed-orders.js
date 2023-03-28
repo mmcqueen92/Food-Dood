@@ -58,23 +58,25 @@ export default function UnclaimedOrders(props) {
 
 
     return (
-      <div className='flex flex-row justify-evenly'>
-        <div className='border-2 border-green-500'>
-          <UnclaimedPaidOrdersList
-            orders={paidOrders}
-            driver={driver}
-            userId={userId}
-          ></UnclaimedPaidOrdersList>
-        </div>
+      <div className='flex flex-col items-center'>
+        <div className='flex flex-row justify-evenly border-2 border-blue-800 m-5 p-5 rounded-md bg-green-400 w-4/5'>
+          <div className='border-2 border-blue-800 p-2 rounded-md bg-slate-200'>
+            <UnclaimedPaidOrdersList
+              orders={paidOrders}
+              driver={driver}
+              userId={userId}
+            ></UnclaimedPaidOrdersList>
+          </div>
 
-        <div className='border-2 border-green-500'>
-          <UnclaimedReadyForPickupList
-            orders={readyForPickupOrders}
-            driver={driver}
-            userId={userId}
-          ></UnclaimedReadyForPickupList>
-        </div>
+          <div className='border-2 border-blue-800 p-2 rounded-md bg-slate-200'>
+            <UnclaimedReadyForPickupList
+              orders={readyForPickupOrders}
+              driver={driver}
+              userId={userId}
+            ></UnclaimedReadyForPickupList>
+          </div>
 
+        </div>
       </div>
     )
   } else {

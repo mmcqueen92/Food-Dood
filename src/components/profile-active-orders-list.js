@@ -18,7 +18,7 @@ export default function ProfileActiveOrdersList(props) {
 
 
   return (
-    <div className="flex flex-col border-2 border-green-500 rounded-md max-w-sm w-full m-2 p-2">
+    <div className="flex flex-col border-2 border-blue-800 bg-slate-200 rounded-md max-w-sm w-full m-2 p-2">
       {orders.length === 0 && (
         <div className="flex justify-center">
           No pending orders

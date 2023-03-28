@@ -7,7 +7,7 @@ export default function NearbyRestaurantsList(props) {
   const itemArray = restaurantsArray.map((restaurant) => {
     return (
       <Link
-      key={restaurant.id}
+        key={restaurant.id}
         href={{
           pathname: '/view-restaurant',
           query: restaurant.id
@@ -25,10 +25,12 @@ export default function NearbyRestaurantsList(props) {
   })
 
   return (
-    
-    <div className="flex flex-col items-center">
-      <div className="text-rose-500">Nearby Restaurants</div>
-      {itemArray}
+
+    <div className="flex flex-col items-center w-full">
+      <div className="text-blue-800">Nearby Restaurants</div>
+      <div>
+        {itemArray}
+      </div>
     </div>
   )
 }

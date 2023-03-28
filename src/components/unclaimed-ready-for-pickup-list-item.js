@@ -31,21 +31,28 @@ export default function UnclaimedReadyForPickupListItem(props) {
   }, [])
 
   const claimOrder = async () => {
-    const data = {driverId, orderId, userId}
+    const data = { driverId, orderId, userId }
     const endpoint = 'api/orders/update-driver'
     await axios.post(endpoint, data)
+      .then((res) => {
+        router.push(`/driver-dashboard?${userId}`)
+      })
 
   }
 
   return (
-    <>
-      Order #: {order.id}<br></br>
+    <div className="border-2 border-blue-800 m-2 p-2 rounded-md bg-green-200">
+      <div>
+        <div className="underline">
+          Order #: {order.id}<br></br>
+        </div>
       Restaurant Address: {restaurant.address}<br></br>
       Delivery Address: {order.address}<br></br>
-      <button 
-      onClick={claimOrder}
-      className="border-2 border-green-500">Claim Order</button>
-    </>
+      </div>
+      <button
+        onClick={claimOrder}
+        className="border-2 border-blue-800 rounded-md p-1 m-1 bg-slate-200">Claim Order</button>
+    </div>
   )
 
 

@@ -1,9 +1,9 @@
 export default function ProfileViewRestaurantsListItem(props) {
   return (
     <div>
-    name: {props.name}
+    Restaurant Name: {props.name}
     <br></br>
-    {props.address}
+    Address: {props.address}
   </div>
   )
 }

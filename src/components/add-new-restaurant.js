@@ -13,6 +13,10 @@ export default function AddNewRestaurant(props) {
   const address = props.address;
   const setAddress = props.setAddress
 
+  const cancelNewRestaurant = () => {
+
+  }
+
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -45,7 +49,7 @@ export default function AddNewRestaurant(props) {
         <br></br>
 
         <input
-          className="rounded-md border-2 border-green-500 my-1"
+          className="rounded-md border-2 border-blue-800 my-1"
           onChange={(event) => {
             setName(event.target.value)
           }}
@@ -60,7 +64,7 @@ export default function AddNewRestaurant(props) {
         <br></br>
 
         <input
-          className="rounded-md border-2 border-green-500 my-1"
+          className="rounded-md border-2 border-blue-800 my-1"
           onChange={(event) => {
             setAddress(event.target.value)
           }}
@@ -72,7 +76,8 @@ export default function AddNewRestaurant(props) {
         <br></br>
 
         <div className="flex justify-center">
-          <button className="border-2 bg-rose-500 p-1 rounded-md hover:bg-black hover:text-red-500" type="submit">Submit</button>
+          <button className="border-2 border-blue-800 p-1 rounded-md hover:bg-blue-700 hover:text-slate-200" type="submit">Submit</button>
+
         </div>
       </form>
     </div>

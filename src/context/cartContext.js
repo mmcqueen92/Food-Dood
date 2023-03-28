@@ -89,6 +89,7 @@ export const CartProvider = ({ children }) => {
 
   const emptyCart = () => {
     runSetCart([])
+    localStorage.setItem("food_dood_cart", JSON.stringify(cart))
   }
 
   const value = {

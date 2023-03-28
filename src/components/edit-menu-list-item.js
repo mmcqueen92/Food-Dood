@@ -36,7 +36,7 @@ export default function EditMenuListItem(props) {
 
 
   return (
-    <div className="border-2 border-green-800 rounded-md m-2 p-2 flex flex-row justify-between">
+    <div className="border-2 border-blue-800 rounded-md m-2 p-2 flex flex-row justify-between bg-green-200">
 
       {editItem === "inactive" && (
         <div className="flex flex-row justify-between w-full">
@@ -48,7 +48,7 @@ export default function EditMenuListItem(props) {
             Prep Time: {estTime} minutes
           </div>
           <button
-            className="border-2 border-green-500 m-1 p-1 rounded-md"
+            className="border-2 border-blue-800 m-1 p-1 rounded-md bg-slate-200 hover:bg-blue-700 hover:text-slate-200"
             onClick={() => { setEditItem("active") }}
           >Edit Item</button>
         </div>

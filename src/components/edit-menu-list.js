@@ -13,7 +13,7 @@ export default function EditMenuList (props) {
     )
   })
   return (
-    <div className="border-2 border-yellow-600 rounded-md m-2 p-2">
+    <div className="m-2 p-2">
     {itemComponents}
     </div>
   )

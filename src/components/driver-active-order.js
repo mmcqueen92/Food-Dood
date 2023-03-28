@@ -6,7 +6,7 @@ export default function DriverActiveOrder(props) {
   const order = props.activeOrder;
   const [orderStatus, setOrderStatus] = useState(order.status)
   const restaurant = props.restaurant;
-  console.log("restaurant: ", restaurant)
+
 
   if (order) {
     const createdAt = order.createdAt;
@@ -53,7 +53,7 @@ export default function DriverActiveOrder(props) {
         })
     }
     return (
-      <div className="border-2 border-green-500">
+      <div className="border-2 border-blue-800 rounded-md p-2 bg-green-200">
         Restaurant Id: {restaurant.id}<br></br>
         Restaurant Name: {restaurant.name}<br></br>
         Restaurant Address: {restaurant.address}<br></br>
@@ -64,14 +64,14 @@ export default function DriverActiveOrder(props) {
 
         {orderStatus === "ready-for-pickup" && (
           <button
-            className="border-2 border-green-500 m-1 p-1"
+            className="border-2 border-blue-800 m-1 p-1 rounded-md"
             onClick={pickupOrder}
           >Pickup Order</button>
         )}
 
         {orderStatus === "en-route" && (
           <button
-            className="border-2 border-green-500 m-1 p-1"
+            className="border-2 border-blue-800 m-1 p-1 rounded-md"
             onClick={dropoffOrder}
           >Drop Off Order</button>
         )}

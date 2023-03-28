@@ -24,11 +24,15 @@ export default function CheckoutOrderList(props) {
 
   return (
     <div>
-      {componentArray}
-      Subtotal: ${totalItemPrice / 100}<br></br>
-      Delivery Fee: ${deliveryFee / 100} <br></br>
-      GST: ${customerGst}<br></br>
-      Total Price: ${totalPriceDollars.toFixed(2)}
+      <div className="p-1">
+        {componentArray}
+      </div>
+      <div className="border-t-2 border-blue-800 p-1 m-1">
+        Subtotal: ${totalItemPrice / 100}<br></br>
+        Delivery Fee: ${deliveryFee / 100} <br></br>
+        GST: ${customerGst}<br></br>
+        Total Price: ${totalPriceDollars.toFixed(2)}
+      </div>
     </div>
   )
 }

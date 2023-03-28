@@ -14,7 +14,7 @@ export default function MenuList (props) {
     )
   })
   return (
-    <div className="border-2 border-yellow-600 rounded-md w-3/5 m-2 p-2">
+    <div className="border-2 border-blue-700 rounded-md w-3/5 m-2 p-2 bg-slate-200">
     Menu:
     <br></br>
     {itemComponents}

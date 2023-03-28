@@ -24,7 +24,10 @@ const orderComponents = orders.map((order) => {
 })
 
 return (
-  <div>
+  <div className="border-2 border-blue-800 bg-slate-200 rounded-md p-2">
+    <div>
+      Active Orders:
+    </div>
     {orderComponents}
 
   </div>

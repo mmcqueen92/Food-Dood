@@ -16,7 +16,7 @@ export default function CheckoutOrderListItem(props) {
   const price = (props.price * quantity) / 100;
 
   return (
-    <div className="flex flex-row justify-between">
+    <div className="flex flex-row justify-between m-1">
       <div>
         {name}
       </div>

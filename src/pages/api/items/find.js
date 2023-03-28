@@ -22,7 +22,6 @@ export default async function handler(req, res) {
         return thingy
       })
 
-      // console.log("inside find, items: ", items)
 
       res.status(201).json(items)
       prisma.$disconnect()

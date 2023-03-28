@@ -42,7 +42,7 @@ export async function getServerSideProps({ query }) {
     const restaurantId = activeOrder.restaurantId;
     const restaurant = await prisma.restaurant.findUnique({
       where: {
-        id:restaurantId
+        id: restaurantId
       }
     })
     return {
@@ -74,26 +74,37 @@ export default function DriverDashboard(props) {
 
   if (session) {
     return (
-      <div className="flex flex-row justify-evenly">
+      <div className="flex flex-col items-center">
+        <div className="flex flex-col justify-center items-center border-2 border-blue-800 m-5 rounded-md w-4/5 bg-green-400 p-5">
+          <div className="text-2xl underline m-2 mb-10">
+            Driver Dashboard
+          </div>
+          <div className="flex flex-row justify-evenly w-4/5">
+            <div className="border-2 border-blue-800 p-2 rounded-md bg-slate-200">
+              <h1>Active Orders:</h1>
+              {activeOrder && (
+                <DriverActiveOrder
+                  activeOrder={activeOrder}
+                  restaurant={restaurant}
+                ></DriverActiveOrder>
+              )}
+            </div>
 
-        <div>
-          <h1>Active Orders:</h1>
-          {activeOrder && (
-            <DriverActiveOrder
-              activeOrder={activeOrder}
-              restaurant={restaurant}
-            ></DriverActiveOrder>
-          )}
+            <Link
+              href={{
+                pathname: '/unclaimed-orders',
+
+              }}
+            >
+              <button
+                className="border-2 border-blue-800 bg-slate-200 p-1 rounded-md"
+              >
+                View Unclaimed Orders
+              </button>
+            </Link>
+
+          </div>
         </div>
-
-        <Link
-          href={{
-            pathname: '/unclaimed-orders',
-
-          }}
-        >Link to Unclaimed Orders</Link>
-
-
 
       </div>
     )

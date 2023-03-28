@@ -75,7 +75,7 @@ export default function RestaurantActiveOrdersListItem(props) {
   }
 
   return (
-    <div className="border-2 border-green-500 m-2 p-2 rounded-md">
+    <div className="border-2 border-blue-800 bg-green-200 m-2 p-2 rounded-md">
       <h1>Order ID: {order.id}</h1>
       {itemComponents}
       <br></br>
@@ -83,10 +83,10 @@ export default function RestaurantActiveOrdersListItem(props) {
       <br></br>
 
       {editPrepTime === "inactive" && (
-        <div>
+        <div className="flex flex-col">
           Prep Time: {order.prepTime}
           <button
-            className="border-2 border-green-500 m-1 p-1 rounded-md"
+            className="border-2 border-blue-800 m-1 p-1 rounded-md bg-slate-200 hover:bg-blue-700 hover:text-slate-200"
             onClick={() => {
               setEditPrepTime("active")
             }}
@@ -101,10 +101,10 @@ export default function RestaurantActiveOrdersListItem(props) {
           <form
             onSubmit={savePrepTime}
           >
-            <label className="m-2" htmlFor="newPrepTime"></label>
+            <label htmlFor="newPrepTime"></label>
             <input
               type="number"
-              className="rounded-md border-2 border-green-500 my-1"
+              className="rounded-md border-2 border-blue-800 m-1 p-1"
               onChange={(event) => {
                 setNewPrepTime(event.target.value)
               }}
@@ -113,7 +113,7 @@ export default function RestaurantActiveOrdersListItem(props) {
               name="newPrepTime"
             ></input>
             <button
-              className="border-2 border-green-500 rounded-md p-1"
+              className="border-2 border-blue-800 rounded-md p-1 m-1 bg-slate-200"
               type="submit"
             >Save</button>
           </form>
@@ -127,7 +127,7 @@ export default function RestaurantActiveOrdersListItem(props) {
           Ready for Pickup at: {pickupSlice}
           <br></br>
           <button
-            className="border-2 border-green-500 m-1 p-1 rounded-md"
+            className="border-2 border-blue-800 m-1 p-1 rounded-md bg-slate-200"
             onClick={orderReady}
           >Ready for Pickup</button>
 

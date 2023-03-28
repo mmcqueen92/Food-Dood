@@ -21,22 +21,22 @@ export default function StripePayment(props) {
   const address = props.address;
   let id;
 
-  console.log("cart: ", cart)
+
 
   let estTimes = cart.map((item) => {
     const estTime = item.estTime;
-    console.log("estTime: ", estTime)
+
     return estTime;
   });
   let prepTime = 0;
   estTimes.forEach(time => {
-    console.log("time: ", time)
+
     prepTime += time;
   })
 
   const deliveryTime = 15;
 
-  console.log("prepTime: ", prepTime)
+
 
 
 
@@ -109,7 +109,9 @@ export default function StripePayment(props) {
   };
   return (
     <div>
-      <button onClick={handleCheckout}>
+      <button 
+      className='bg-slate-200 w-1/5 rounded-md p-1 m-2 border-2 border-blue-800 hover:bg-blue-700 hover:text-slate-200'
+      onClick={handleCheckout}>
         Pay
       </button>
     </div>

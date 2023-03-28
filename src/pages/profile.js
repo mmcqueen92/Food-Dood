@@ -76,48 +76,51 @@ export default function Profile() {
   }
 
 
-  console.log("userId bish: ", userId)
+
   if (session) {
 
     return (
-      <div className="flex flex-col items-center border-2 border-green-500 m-2 rounded-md">
-        <div className="flex flex-row justify-center border-2 border-green-500 m-2 rounded-md">
-          {session.user.name || session.user.email}'s Profile
-        </div>
-        <div className="flex flex-row p-2 m-2 w-3/5 justify-between">
-
-          <ProfileActiveOrdersList
-            orders={activeOrders}
-          ></ProfileActiveOrdersList>
-          <div className="flex flex-col">
-          {!driverId && (
-            <button
-              className="border-2 border-green-500 rounded-md m-2 p-2"
-              onClick={registerAsDriver}
-            >Register as Driver</button>
-          )}
-          {driverId && (
-            <Link
-              href={{
-                pathname: '/driver-dashboard',
-                query: userId
-              }}
-            >
-              <button className="border-2 border-green-500 rounded-md m-1 p-1">
-                Driver Dashboard
-              </button>
-            </Link>
-          )}
-          <Link
-            href={{
-              pathname: 'owner-dashboard',
-              query: userId
-            }}
-          >
-            <button className="border-2 border-green-500 rounded-md m-1 p-1">Owner Dashboard</button>
-          </Link>
-
+      <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center border-2 border-blue-800 m-5 rounded-md bg-green-400 w-3/5">
+          <div className="flex flex-row justify-center border-2 border-blue-800 bg-slate-200 text-xl p-2 m-5 rounded-md">
+            {session.user.name || session.user.email}'s Profile
           </div>
+          <div className="flex flex-row p-2 m-2 w-3/5 justify-between">
+
+            <ProfileActiveOrdersList
+              orders={activeOrders}
+            ></ProfileActiveOrdersList>
+            <div className="flex flex-col">
+              {!driverId && (
+                <button
+                  className="border-2 border-blue-800 rounded-md m-1 p-1 bg-slate-200"
+                  onClick={registerAsDriver}
+                >Register as Driver</button>
+              )}
+              {driverId && (
+                <Link
+                  href={{
+                    pathname: '/driver-dashboard',
+                    query: userId
+                  }}
+                >
+                  <button className="border-2 border-blue-800 rounded-md m-1 p-1 bg-slate-200">
+                    Driver Dashboard
+                  </button>
+                </Link>
+              )}
+              <Link
+                href={{
+                  pathname: 'owner-dashboard',
+                  query: userId
+                }}
+              >
+                <button className="border-2 border-blue-800 bg-slate-200 rounded-md m-1 p-1">Owner Dashboard</button>
+              </Link>
+
+            </div>
+          </div>
+
         </div>
 
       </div>

@@ -26,13 +26,17 @@ export default function OwnerDashboard(props) {
   const { data: session } = useSession();
   const restaurants = props.restaurants;
   const userId = props.userId;
-  console.log("restaurants: ", restaurants)
+
   const [createNewRestaurant, setCreateNewRestaurant] = useState(false)
   const [name, setName] = useState("")
   const [address, setAddress] = useState("")
 
   const addNewRestaurant = () => {
-    setCreateNewRestaurant("true")
+    setCreateNewRestaurant(true)
+  }
+
+  const cancelNewRestaurant = () => {
+    setCreateNewRestaurant(false)
   }
 
   if (session.user.id === userId) {
@@ -40,12 +44,22 @@ export default function OwnerDashboard(props) {
     if (restaurants) {
       return (
         <div className="flex flex-row justify-center">
-          <div className='flex flex-col m-2 p-2 rounded-md w-1/3 bg-green-500'>
+          <div className='flex flex-col m-2 p-2 rounded-md w-1/3 bg-green-400'>
             <div className='flex flex-row justify-between'>
-              <h1>Restaurants:</h1>
-              <button
-                onClick={addNewRestaurant}
-                className='bg-slate-200 m-1 p-1 rounded-md border-blue-600 border-2'>Add New Restaurant</button>
+              <div
+              className='text-2xl rounded-md m-5'
+              >Restaurants:</div>
+              {!createNewRestaurant && (
+                <button
+                  onClick={addNewRestaurant}
+                  className='bg-slate-200 m-5 p-1 rounded-md border-blue-600 border-2'>Add New Restaurant</button>
+              )}
+
+              {createNewRestaurant && (
+                 <button
+                 onClick={cancelNewRestaurant}
+                 className='bg-slate-200 m-5 p-1 rounded-md border-blue-600 border-2'>Cancel</button>
+              )}
             </div>
             {!createNewRestaurant && (
               <ProfileViewRestaurantsList

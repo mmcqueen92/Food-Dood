@@ -12,8 +12,8 @@ export default function CheckoutCart (props) {
   const totalPriceDollars = props.totalPriceDollars || 0;
 
   return (
-    <div className="border-2 border-yellow-600 w-2/5 rounded-md m-2 p-2">
-      <h1>Your Order:</h1>
+    <div className="bg-slate-200 w-9/10 rounded-md m-2 p-2 border-2 border-blue-800">
+      <h1 className="underline text-xl">Your Order:</h1>
       <CheckoutOrderList
         items={items}
         totalItemPrice={totalItemPrice}

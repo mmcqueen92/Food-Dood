@@ -11,7 +11,7 @@ export default async function handler(req, res) {
         id, prepTime
       } = req.body;
 
-      console.log("THIS IS THE ORDER ID?", id)
+
 
       const parsedPrepTime = parseInt(prepTime)
 

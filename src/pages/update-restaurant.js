@@ -60,7 +60,7 @@ export default function UpdateRestaurant(props) {
         const endpoint = "/api/restaurants/update"
 
         await axios.post(endpoint, data)
-        .then(setEditName("inactive"));
+          .then(setEditName("inactive"));
 
       } else {
 
@@ -108,7 +108,7 @@ export default function UpdateRestaurant(props) {
 
             const createdItem = res.data;
             const newState = [...items, createdItem]
-  
+
             setNewItem("inactive")
             setItems(newState)
             setNewItemName("")
@@ -118,185 +118,201 @@ export default function UpdateRestaurant(props) {
       }
     }
 
+    const cancelNewItem = () => {
+      setNewItem("inactive")
+      setNewItemName("")
+      setNewItemPrice(0)
+      setNewItemTime(0)
+    }
+
     return (
-      <>
+      <div className="flex flex-col items-center">
 
-        This is the Edit Restaurant page for:<br></br>
-        <div>
+        <div className="flex flex-col w-4/5 items-center border-2 border-blue-800 rounded-md m-5 p-2 bg-green-400">
 
-          {editName === "inactive" && (
-            <div className="flex flex-row">
-              <div className="bg-green-500 text-xl text-white m-2 p-2 rounded-md">
-                {name}
-              </div>
-              <button
-                onClick={() => {
-                  setEditName("edit")
-                }}
-                className="border-2 border-green-500 rounded-md p-1 m-2"
-              >Edit</button>
-            </div>
-          )}
+          This is the Edit Restaurant page for:<br></br>
+          <div>
 
-          {editName === "edit" && (
-            <div className="flex flex-row">
-              <form
-                onSubmit={saveName}
-              >
-                <div>
-                  <input
-                    type="text"
-                    className="rounded-md border-2 border-green-500 my-1"
-                    onChange={(event) => {
-                      setName(event.target.value)
-                    }}
-                    value={name}
-                    id="name"
-                    name="name"
-                  ></input>
+            {editName === "inactive" && (
+              <div className="flex flex-row">
+                <div className="text-2xl text-bold underline text-blue-800 m-2 p-2 rounded-md">
+                  {name}
                 </div>
-                <div>
-                  <button
-                    className="border-2 border-green-500 rounded-md p-1 m-2"
-                    type="submit"
-                  >Save</button>
-                </div>
-              </form>
-            </div>
-          )}
-
-          {editName === "saving" && (
-            <Saving></Saving>
-          )}
-
-        </div>
-
-        Located at <div>
-
-          {editAddress === "inactive" && (
-            <div className="flex flex-row">
-              <div className="bg-green-500 text-xl text-white m-2 p-2 rounded-md">
-                {address}
-              </div>
-              <button
-                onClick={() => {
-                  setEditAddress("edit")
-                }}
-                className="border-2 border-green-500 rounded-md p-1 m-2"
-              >Edit</button>
-            </div>
-          )}
-
-          {editAddress === "edit" && (
-            <div className="flex flex-row">
-              <form
-                onSubmit={saveAddress}
-              >
-                <div>
-                  <input
-                    type="text"
-                    className="rounded-md border-2 border-green-500 my-1"
-                    onChange={(event) => {
-                      setAddress(event.target.value)
-                    }}
-                    value={address}
-                    id="address"
-                    name="address"
-                  ></input>
-                </div>
-                <div>
-                  <button
-                    className="border-2 border-green-500 rounded-md p-1 m-2"
-                    type="submit"
-                  >Save</button>
-                </div>
-              </form>
-            </div>
-          )}
-
-        </div>
-        <div className="flex flex-row">
-          <div className="flex flex-col border-2 border-yellow-600 rounded-md w-3/5 m-2 p-2">
-            <div className="flex flex-row justify-between">
-              <div>
-                Menu:
-              </div>
-              <div>
-                <button className="border-2 border-green-500 p-2 rounded-md"
-                  onClick={() => { setNewItem("active") }}
-                >Add New Item to Menu</button>
-              </div>
-            </div>
-
-            <EditMenuList
-              items={items}
-            ></EditMenuList>
-          </div>
-          {newItem === "active" && (
-            <div className="border-2 border-yellow-600 m-2 rounded-md p-2">
-              <form
-                onSubmit={saveNewItem}
-              >
-                <h1>Add New Item:</h1>
-
-                <div className="flex flex-col">
-                  <label className="m-2" htmlFor="newItemName">Item Name:</label>
-                  <input
-                    type="text"
-                    className="rounded-md border-2 border-green-500 my-1"
-                    onChange={(event) => {
-                      setNewItemName(event.target.value)
-                    }}
-                    value={newItemName}
-                    id="newItemName"
-                    name="newItemName"
-                  ></input>
-                </div>
-
-
-
-                <div className="flex flex-col">
-                  <label className="m-2" htmlFor="newItemPrice">Item Price ($):</label>
-                  <input
-                    type="number"
-                    className="rounded-md border-2 border-green-500 my-1"
-                    onChange={(event) => {
-                      setNewItemPrice(event.target.value)
-                    }}
-                    value={newItemPrice}
-                    id="newItemPrice"
-                    name="newItemPrice"
-                  ></input>
-                </div>
-
-                <div className="flex flex-col">
-                  <label className="m-2" htmlFor="newItemTime">Prep Time:</label>
-                  <input
-                    type="number"
-                    className="rounded-md border-2 border-green-500 my-1"
-                    onChange={(event) => {
-                      setNewItemTime(event.target.value)
-                    }}
-                    value={newItemTime}
-                    id="newItemTime"
-                    name="newItemTime"
-                  ></input>
-                </div>
-
                 <button
-                  className="border-2 border-green-500 rounded-md p-1"
-                  type="submit"
-                >Save</button>
+                  onClick={() => {
+                    setEditName("edit")
+                  }}
+                  className="border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 rounded-md p-1 m-2"
+                >Edit Name</button>
+              </div>
+            )}
 
-              </form>
+            {editName === "edit" && (
+              <div className="flex flex-row">
+                <form
+                  onSubmit={saveName}
+                >
+                  <div>
+                    <input
+                      type="text"
+                      className="rounded-md border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 my-1"
+                      onChange={(event) => {
+                        setName(event.target.value)
+                      }}
+                      value={name}
+                      id="name"
+                      name="name"
+                    ></input>
+                  </div>
+                  <div>
+                    <button
+                      className="border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 rounded-md p-1 m-2"
+                      type="submit"
+                    >Save</button>
+                  </div>
+                </form>
+              </div>
+            )}
+
+            {editName === "saving" && (
+              <Saving></Saving>
+            )}
+
+          </div>
+
+          Located at <div>
+
+            {editAddress === "inactive" && (
+              <div className="flex flex-row">
+                <div className="text-2xl text-blue-800 underline m-2 p-2 rounded-md">
+                  {address}
+                </div>
+                <button
+                  onClick={() => {
+                    setEditAddress("edit")
+                  }}
+                  className="border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 rounded-md p-1 m-2"
+                >Edit Address</button>
+              </div>
+            )}
+
+            {editAddress === "edit" && (
+              <div className="flex flex-row">
+                <form
+                  onSubmit={saveAddress}
+                >
+                  <div>
+                    <input
+                      type="text"
+                      className="rounded-md border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 my-1"
+                      onChange={(event) => {
+                        setAddress(event.target.value)
+                      }}
+                      value={address}
+                      id="address"
+                      name="address"
+                    ></input>
+                  </div>
+                  <div>
+                    <button
+                      className="border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 rounded-md p-1 m-2"
+                      type="submit"
+                    >Save</button>
+                  </div>
+                </form>
+              </div>
+            )}
+
+          </div>
+          <div className="flex flex-row w-full justify-center">
+            <div className="flex flex-col border-2 border-blue-800 rounded-md m-2 p-2 w-3/5 bg-slate-200">
+              <div className="flex flex-row justify-between">
+                <div>
+                  Menu:
+                </div>
+                <div>
+                  <button className="border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 p-2 rounded-md"
+                    onClick={() => { setNewItem("active") }}
+                  >Add New Item to Menu</button>
+                </div>
+              </div>
+
+              <EditMenuList
+                items={items}
+              ></EditMenuList>
             </div>
-          )}
+            {newItem === "active" && (
+              <div className="border-2 border-blue-800 m-2 rounded-md p-2 bg-slate-200">
+                <form
+                  onSubmit={saveNewItem}
+                >
+                  <h1>Add New Item:</h1>
+
+                  <div className="flex flex-col">
+                    <label className="my-2" htmlFor="newItemName">Item Name:</label>
+                    <input
+                      type="text"
+                      className="rounded-md border-2 border-blue-800 bg-slate-200 my-1"
+                      onChange={(event) => {
+                        setNewItemName(event.target.value)
+                      }}
+                      value={newItemName}
+                      id="newItemName"
+                      name="newItemName"
+                    ></input>
+                  </div>
+
+
+
+                  <div className="flex flex-col">
+                    <label className="my-2" htmlFor="newItemPrice">Item Price ($):</label>
+                    <input
+                      type="number"
+                      className="rounded-md border-2 border-blue-800 bg-slate-200my-1"
+                      onChange={(event) => {
+                        setNewItemPrice(event.target.value)
+                      }}
+                      value={newItemPrice}
+                      id="newItemPrice"
+                      name="newItemPrice"
+                    ></input>
+                  </div>
+
+                  <div className="flex flex-col">
+                    <label className="my-2" htmlFor="newItemTime">Prep Time:</label>
+                    <input
+                      type="number"
+                      className="rounded-md border-2 border-blue-800 bg-slate-200 my-1"
+                      onChange={(event) => {
+                        setNewItemTime(event.target.value)
+                      }}
+                      value={newItemTime}
+                      id="newItemTime"
+                      name="newItemTime"
+                    ></input>
+                  </div>
+                  <div className="flex flex-row justify-between">
+                    <button
+                      className="border-2 border-blue-800 rounded-md p-1 bg-slate-200 hover:bg-blue-700 hover:text-slate-200"
+                      type="submit"
+                    >Save</button>
+                    <button
+                      className="border-2 border-blue-800 rounded-md p-1 bg-slate-200 hover:bg-blue-700 hover:text-slate-200"
+                      onClick={cancelNewItem}
+                      >Cancel
+                    </button>
+                  </div>
+
+                </form>
+              </div>
+            )}
+          </div>
+
+
+
+
         </div>
-
-
-
-
-      </>
+      </div>
     )
   }
 

@@ -24,10 +24,10 @@ export default function OrderListItem(props) {
         Quantity: 
       </div>
       <button onClick={() => {decreaseQuantity(id)}}
-        className="border-2 border-slate-600 w-7 m-1 rounded-full">-</button>
+        className="border-2 border-blue-800 w-7 m-1 rounded-full hover:bg-blue-700 hover:text-slate-200">-</button>
         {quantity}
       <button onClick={() => {increaseQuantity(id)}}
-      className="border-2 border-slate-600 w-7 m-1 rounded-full">+</button>
+      className="border-2 border-blue-800 w-7 m-1 rounded-full hover:bg-blue-700 hover:text-slate-200">+</button>
       <div>
         Price: ${price}
       </div>

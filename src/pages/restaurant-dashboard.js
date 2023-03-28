@@ -55,37 +55,42 @@ export default function RestaurantDashboard(props) {
 
   if (session.user.id === props.restaurant.UserId) {
     return (
-      <div className="flex flex-col items-center">
-        <div className="flex flex-col items-center">
-          <div>
-            This is the Restaurant Dashboard for {name}
+      <div className="flex flex-row justify-center">
+
+        <div className="flex flex-col items-center border-2 border-blue-800 w-4/5 rounded-md m-5 p-2 bg-green-400">
+          <div className="flex flex-col items-center">
+            <div className="text-xl underline">
+              Restaurant Dashboard
+            </div>
+            <div className="text-xl underline">
+              {name}
+            </div>
+            <div>
+              Located at: {address}
+            </div>
+
           </div>
           <div>
-            Located at {address}
+            <Link
+              href={{
+                pathname: '/update-restaurant',
+                query: id
+              }}
+            >
+              <button className="border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 m-1 p-1 rounded-md">Update Restaurant</button>
+            </Link>
           </div>
 
+
+          <div>
+            <RestaurantActiveOrdersList
+              orders={orders}
+              items={items}
+            ></RestaurantActiveOrdersList>
+          </div>
+
+
         </div>
-        <div>
-          <Link
-            href={{
-              pathname: '/update-restaurant',
-              query: id
-            }}
-          >
-            <button className="border-2 border-green-500 m-1 p-1 rounded-md">Update Restaurant</button>
-          </Link>
-        </div>
-
-
-        <div>
-          Active Orders:<br></br>
-          <RestaurantActiveOrdersList
-            orders={orders}
-            items={items}
-          ></RestaurantActiveOrdersList>
-        </div>
-
-
       </div>
     )
   }

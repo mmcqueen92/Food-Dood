@@ -25,7 +25,8 @@ export default async function handler(req, res) {
 
           }
         })
-        res.redirect(201, `/driver-dashboard?${userId}`)
+
+
 
       } catch {
         res.status(500).send({ error: 'failed to fetch data' })
