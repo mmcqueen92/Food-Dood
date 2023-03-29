@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+To get started install necessary packages and run the development server:
 
 ```bash
 npm run dev
@@ -11,28 +11,48 @@ yarn dev
 # or
 pnpm dev
 ```
+Food-dood is a food-delivery app made as a project to practice with NextJS and Prisma.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Screenshots:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Nearby Restaurants - 
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+!["screenshot of the nearby-restaurants page"](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/nearby-restaurants.png?raw=true)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+View Restaurant - 
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+!["screenshot of the view-restaurant page](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/view-restaurant.png?raw=true)
 
-## Learn More
+Checkout - 
 
-To learn more about Next.js, take a look at the following resources:
+!["screenshot of the checkout page](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/checkout.png?raw=true)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Profile - 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+!["screenshot of the profile page](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/profile.png?raw=true)
 
-## Deploy on Vercel
+Owner Dashboard - 
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+!["screenshot of the owner-dashboard page](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/owner-dashboard.png?raw=true)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Restaurant Dashboard - 
+
+!["screenshot of the restaurant-dashboard page](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/restaurant-dashboard.png?raw=true)
+
+Update Restaurant - 
+
+!["screenshot of the update-restaurant page](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/update-restaurant.png?raw=true)
+
+Driver Dashboard - 
+
+!["screenshot of the driver-dashboard page](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/driver-dashboard.png?raw=true)
+
+Unclaimed Orders - 
+
+!["screenshot of the unclaimed-orders page](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/unclaimed-orders.png?raw=true)
+
+
+
+
+
+
