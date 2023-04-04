@@ -31,6 +31,9 @@ export default function MenuListItem(props) {
           Item: {props.name}
         </div>
         <div>
+          Description: {props.description}
+        </div>
+        <div>
           Price: ${priceDollars}
         </div>
       </div>

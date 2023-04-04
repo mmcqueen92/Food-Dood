@@ -93,6 +93,7 @@ model Item {
   priceCents   Int
   orderItems   OrderItem[]
   estTime      Int
+  description  String?
 }
 
 // Old model
@@ -108,7 +109,7 @@ model Order {
   restaurantId Int
   user         User        @relation(fields: [userId], references: [id])
   userId       Int
-  driver       Driver?      @relation(fields: [driverId], references: [id])
+  driver       Driver?     @relation(fields: [driverId], references: [id])
   driverId     Int?
   prepTime     Int
   deliveryTime Int

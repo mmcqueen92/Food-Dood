@@ -9,6 +9,7 @@ export default function EditMenuList (props) {
       name={item.name}
       priceCents={item.priceCents}
       estTime={item.estTime}
+      description={item.description}
       ></EditMenuListItem>
     )
   })

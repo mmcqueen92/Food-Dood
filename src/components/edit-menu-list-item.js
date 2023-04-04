@@ -6,6 +6,7 @@ export default function EditMenuListItem(props) {
   const [itemName, setItemName] = useState(props.name);
   const [itemPriceCents, setItemPriceCents] = useState(props.priceCents);
   const [itemEstTime, setItemEstTime] = useState(props.estTime);
+  const [itemDescription, setItemDescription] = useState(props.description)
   const id = props.id;
 
 
@@ -21,8 +22,9 @@ export default function EditMenuListItem(props) {
     const type = "editItem";
     const name = itemName;
     const priceCents = itemPriceCents;
-    const estTime = itemEstTime
-    const data = {type, name, priceCents, estTime, id}
+    const estTime = itemEstTime;
+    const description = itemDescription;
+    const data = {type, name, priceCents, estTime, id, description}
     const endpoint = "/api/items/edit"
 
     await axios.post(endpoint,data)
@@ -44,6 +46,8 @@ export default function EditMenuListItem(props) {
             Item: {name}
             <br></br>
             Price: ${priceDollars}
+            <br></br>
+            Description: {itemDescription}
             <br></br>
             Prep Time: {estTime} minutes
           </div>
@@ -85,6 +89,21 @@ export default function EditMenuListItem(props) {
                 value={itemPriceCents}
                 id="itemPriceCents"
                 name="itemPriceCents"
+              ></input>
+
+            </div>
+
+            <div className="flex flex-row">
+              <label className="m-2" htmlFor="itemDescription">New Item Description:</label>
+              <input
+                type="text"
+                className="rounded-md border-2 border-green-500 my-1"
+                onChange={(event) => {
+                  setItemDescription(event.target.value)
+                }}
+                value={itemDescription}
+                id="itemDescription"
+                name="itemDescription"
               ></input>
 
             </div>

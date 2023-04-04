@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     case 'POST':
 
       let {
-        type, name, priceCents, estTime, id
+        type, name, priceCents, estTime, id, description
       } = req.body;
 
       estTime = parseInt(estTime);
@@ -23,6 +23,7 @@ export default async function handler(req, res) {
           name,
           priceCents,
           estTime,
+          description
         }
       })
 

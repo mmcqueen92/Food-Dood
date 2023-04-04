@@ -44,6 +44,7 @@ export default function UpdateRestaurant(props) {
     const [newItemName, setNewItemName] = useState("");
     const [newItemPrice, setNewItemPrice] = useState(0);
     const [newItemTime, setNewItemTime] = useState(0);
+    const [newItemDesc, setNewItemDesc] = useState("");
 
 
 
@@ -100,7 +101,8 @@ export default function UpdateRestaurant(props) {
         const restaurantId = props.restaurant.id;
         const priceCents = newItemPrice * 100;
         const estTime = newItemTime;
-        const data = { name, restaurantId, priceCents, estTime };
+        const description = newItemDesc;
+        const data = { name, restaurantId, priceCents, estTime, description };
         const endpoint = "api/items/new"
 
         await axios.post(endpoint, data)
@@ -123,6 +125,7 @@ export default function UpdateRestaurant(props) {
       setNewItemName("")
       setNewItemPrice(0)
       setNewItemTime(0)
+      setNewItemDesc("")
     }
 
     return (
@@ -262,7 +265,19 @@ export default function UpdateRestaurant(props) {
                     ></input>
                   </div>
 
-
+                  <div className="flex flex-col">
+                    <label className="my-2" htmlFor="newItemDesc">Item Description:</label>
+                    <input
+                      type="text"
+                      className="rounded-md border-2 border-blue-800 bg-slate-200 my-1"
+                      onChange={(event) => {
+                        setNewItemDesc(event.target.value)
+                      }}
+                      value={newItemDesc}
+                      id="newItemDesc"
+                      name="newItemDesc"
+                    ></input>
+                  </div>
 
                   <div className="flex flex-col">
                     <label className="my-2" htmlFor="newItemPrice">Item Price ($):</label>
