@@ -16,7 +16,8 @@ export default async function handler(req, res) {
 
 
       try {
-        await prisma.order.update({
+
+        const order = await prisma.order.update({
           where: {
             id: orderId
           },
@@ -25,6 +26,7 @@ export default async function handler(req, res) {
 
           }
         })
+        res.status(201).json(order)
 
 
 
@@ -37,7 +39,6 @@ export default async function handler(req, res) {
 
 
  
-      res.status(201).json(order)
       prisma.$disconnect()
       break
 

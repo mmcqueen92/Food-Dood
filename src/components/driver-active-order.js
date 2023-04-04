@@ -71,7 +71,7 @@ export default function DriverActiveOrder(props) {
 
         {orderStatus === "en-route" && (
           <button
-            className="border-2 border-blue-800 m-1 p-1 rounded-md"
+            className="border-2 border-blue-800 m-1 p-1 rounded-md bg-slate-200 hover:bg-blue-700 hover:text-slate-200"
             onClick={dropoffOrder}
           >Drop Off Order</button>
         )}

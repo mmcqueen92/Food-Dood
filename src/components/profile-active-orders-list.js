@@ -3,7 +3,7 @@ import ProfileActiveOrdersListItem from "./profile-active-orders-list-item";
 export default function ProfileActiveOrdersList(props) {
   const orders = props.orders
   let orderComponents;
-  console.log("ordersss: ", orders)
+
 
   if (orders) {
     orderComponents = orders.map((order) => {

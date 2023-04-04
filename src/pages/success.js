@@ -67,10 +67,7 @@ export default function Success(props) {
     return itemId;
   })
   let items;
-  console.log("order: ", order)
-  console.log("order items: ", orderItems)
-  console.log("itemIds: ", itemIds)
-  console.log("restaurant: ", restaurant)
+
 
   useEffect(() => {
     const endpoint = "/api/items/find"
@@ -86,7 +83,7 @@ export default function Success(props) {
   useEffect(() => {
 
     emptyCart();
-    console.log("this is the cart now: ", cart)
+
   }, [])
 
   return (

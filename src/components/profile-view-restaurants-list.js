@@ -7,7 +7,7 @@ export default function ProfileViewRestaurantsList(props) {
 
   const restaurantComponents = restaurants.map((restaurant) => {
     return (
-      <div className="flex flex-col m-2 p-2">
+      <div className="flex flex-col m-2 p-2" key={restaurant.id}>
         <div className="flex flex-col border-2 bg-white border-blue-600 m-2 p-2 rounded-md">
           <Link
             key={restaurant.id}

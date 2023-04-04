@@ -9,28 +9,41 @@ import ProfileActiveOrdersList from "@/components/profile-active-orders-list";
 
 
 export default function Profile() {
-  const { data: session } = useSession()
+  const { data: session } = useSession();
 
-  const [user, setUser] = useState()
-  const [restaurants, setRestaurants] = useState()
-  let orders = [];
-  let activeOrders = [];
-  let userId;
-  let driverId;
+  const [user, setUser] = useState();
+  const [restaurants, setRestaurants] = useState();
+  const [orderFilter, setOrderFilter] = useState("pending");
+
+  const [orders, setOrders] = useState([])
+  const [activeOrders, setActiveOrders] = useState([])
+  const [completedOrders, setCompletedOrders] = useState([])
+  const [userId, setUserId] = useState();
+  const [driverId, setDriverId] = useState();
+
+
+
 
   useEffect(() => {
+
     if (session) {
-      userId = session.user.id
+
+      setUserId(session.user.id)
+
+      const tempUserId = session.user.id;
 
 
-      const usersEndpoint = `/api/users/${userId}`;
-      const restaurantsEndpoint = `/api/restaurants/${userId}`
+
+      const usersEndpoint = `/api/users/${tempUserId}`;
+      const restaurantsEndpoint = `/api/restaurants/${tempUserId}`
 
       const getUserData = async () => {
+
         await axios.get(usersEndpoint)
           .then((res) => {
 
             setUser(res.data);
+            setOrders(res.data.orders);
           })
       }
 
@@ -45,26 +58,44 @@ export default function Profile() {
       getUserData();
       getUserRestaurants();
     }
-  }, [])
+  }, [session])
 
+  useEffect(() => {
+    if (user) {
 
-  if (user) {
+      if (orders) {
 
-    orders = user.orders;
-    if (orders) {
-      activeOrders = orders.map((order) => {
-        if (order.status === 'paid' || order.status === 'ready-for-pickup' || order.status === 'en-route') {
-          return order;
-        }
-      })
-      activeOrders = activeOrders.filter((order) => {
-        return order !== undefined;
-      })
+        let newActiveOrders = orders.map((order) => {
+
+          if (order.status === 'paid' || order.status === 'ready-for-pickup' || order.status === 'en-route') {
+
+            return order;
+          }
+        })
+        newActiveOrders = newActiveOrders.filter((order) => {
+          return order !== undefined;
+        })
+
+        setActiveOrders(newActiveOrders)
+
+        let newCompletedOrders = orders.map((order) => {
+          if (order.status === 'delivered') {
+            return order
+          }
+        })
+        newCompletedOrders = newCompletedOrders.filter((order) => {
+          return order !== undefined;
+        })
+        setCompletedOrders(newCompletedOrders);
+      }
+
+      setUserId(user.id)
+      setDriverId(user.driverId[0])
+
     }
-    driverId = user.driverId[0];
-    userId = user.id;
 
-  }
+  }, [user])
+
 
 
   const registerAsDriver = async () => {
@@ -86,10 +117,41 @@ export default function Profile() {
             {session.user.name || session.user.email}'s Profile
           </div>
           <div className="flex flex-row p-2 m-2 w-3/5 justify-between">
+            <div>
+              <label
+                className="m-2"
+              >Show:</label>
+              <select
+                onChange={(event) => {
+                  setOrderFilter(event.target.value)
+                }}
+                className="m-2 rounded-md"
+              >
+                <option value="pending">Pending</option>
+                <option value="all">All</option>
+                <option value="completed">Completed</option>
+              </select>
+              {orderFilter === "pending" && (
+                <ProfileActiveOrdersList
+                  orders={activeOrders}
+                ></ProfileActiveOrdersList>
 
-            <ProfileActiveOrdersList
-              orders={activeOrders}
-            ></ProfileActiveOrdersList>
+              )}
+
+              {orderFilter === "all" && (
+                <ProfileActiveOrdersList
+                  orders={orders}
+                ></ProfileActiveOrdersList>
+              )}
+
+
+              {orderFilter === "completed" && (
+                <ProfileActiveOrdersList
+                  orders={completedOrders}
+                ></ProfileActiveOrdersList>
+              )}
+
+            </div>
             <div className="flex flex-col">
               {!driverId && (
                 <button

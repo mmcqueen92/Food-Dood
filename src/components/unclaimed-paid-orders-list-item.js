@@ -30,6 +30,7 @@ export default function UnclaimedPaidOrdersListItem(props) {
 
     getRestaurantdata()
   }, [])
+  
   const claimOrder = async () => {
     const data = { driverId, orderId, userId }
     const endpoint = 'api/orders/update-driver'
@@ -47,7 +48,7 @@ export default function UnclaimedPaidOrdersListItem(props) {
       Delivery Address: {order.address}<br></br>
       <button
         onClick={claimOrder}
-        className="border-2 border-blue-800 rounded-md p-1 m-1 bg-slate-200">Claim Order</button>
+        className="border-2 border-blue-800 rounded-md p-1 m-1 bg-slate-200 hover:bg-blue-700 hover:text-slate-200">Claim Order</button>
     </div>
   )
 }
