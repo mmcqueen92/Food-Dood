@@ -95,13 +95,13 @@ export default function Success(props) {
         <div className="flex justify-center bg-green-400 rounded-md">
           <div className="bg-slate-200 m-5 rounded-md w-4/5 flex flex-col items-center border-2 border-blue-800">
             <div className="text-xl underline m-2">
-              Order successful
+              Order Successful
             </div>
 
             <Link
               href="/profile"
             >
-              <button className="border-2 border-blue-800 rounded-md m-2 p-1">
+              <button className="border-2 border-blue-800 rounded-md m-2 p-1 hover:bg-blue-700 hover:text-slate-200">
                 Track your Order
               </button>
             </Link>

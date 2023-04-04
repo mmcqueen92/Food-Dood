@@ -68,16 +68,19 @@ export default function RestaurantActiveOrdersListItem(props) {
     const data = { id, status }
     const endpoint = "api/orders/update-status"
     await axios.post(endpoint, data)
-    .then((res) => {
-      setOrderStatus("ready-for-pickup")
-    })
+      .then((res) => {
+        setOrderStatus("ready-for-pickup")
+      })
 
   }
 
   return (
     <div className="border-2 border-blue-800 bg-green-200 m-2 p-2 rounded-md">
       <h1>Order ID: {order.id}</h1>
-      {itemComponents}
+      <div className="bg-slate-200 rounded-md p-1 border-2 border-blue-800">
+        {itemComponents}
+
+      </div>
       <br></br>
       Created at: {createdAtSlice}
       <br></br>
@@ -127,7 +130,7 @@ export default function RestaurantActiveOrdersListItem(props) {
           Ready for Pickup at: {pickupSlice}
           <br></br>
           <button
-            className="border-2 border-blue-800 m-1 p-1 rounded-md bg-slate-200"
+            className="border-2 border-blue-800 m-1 p-1 rounded-md bg-slate-200 hover:bg-blue-700 hover:text-slate-200"
             onClick={orderReady}
           >Ready for Pickup</button>
 
