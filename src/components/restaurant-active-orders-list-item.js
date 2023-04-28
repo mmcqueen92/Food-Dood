@@ -75,73 +75,82 @@ export default function RestaurantActiveOrdersListItem(props) {
   }
 
   return (
-    <div className="border-2 border-blue-800 bg-green-200 m-2 p-2 rounded-md">
-      <h1>Order ID: {order.id}</h1>
-      <div className="bg-slate-200 rounded-md p-1 border-2 border-blue-800">
-        {itemComponents}
+    <div className="border-2 border-blue-800 bg-green-200 m-2 p-2 rounded-md flex flex-col items-center">
 
+      <div className="underline font-bold">Order ID: {order.id}</div>
+
+      <div className="flex flex-row">
+        <div className="bg-slate-200 rounded-md p-1 border-2 border-blue-800">
+          {itemComponents}
+
+        </div>
+        <div className="p-2">
+          <div className="mb-5">
+
+            Created at: {createdAtSlice}
+          </div>
+
+
+          {editPrepTime === "inactive" && (
+            <div className="flex flex-row justify-between">
+              Prep Time: {order.prepTime}
+              <button
+                className="border-2 border-blue-800 m-1 p-1 rounded-md bg-slate-200 hover:bg-blue-700 hover:text-slate-200"
+                onClick={() => {
+                  setEditPrepTime("active")
+                }}
+              >Adjust Prep Time</button>
+            </div>
+
+
+          )}
+
+          {editPrepTime === "active" && (
+            <div>
+              <form
+                onSubmit={savePrepTime}
+              >
+                <label htmlFor="newPrepTime"></label>
+                <input
+                  type="number"
+                  className="rounded-md border-2 border-blue-800 m-1 p-1"
+                  onChange={(event) => {
+                    setNewPrepTime(event.target.value)
+                  }}
+                  value={newPrepTime}
+                  id="newPrepTime"
+                  name="newPrepTime"
+                ></input>
+                <button
+                  className="border-2 border-blue-800 rounded-md p-1 m-1 bg-slate-200"
+                  type="submit"
+                >Save</button>
+              </form>
+            </div>
+          )}
+
+
+
+          {orderStatus === "prep" && (
+            <div>
+              Ready for Pickup at: {pickupSlice}
+
+              <button
+                className="border-2 border-blue-800 m-1 p-1 rounded-md bg-slate-200 hover:bg-blue-700 hover:text-slate-200"
+                onClick={orderReady}
+              >Ready for Pickup</button>
+
+            </div>
+          )}
+
+          {orderStatus === "ready-for-pickup" && (
+            <div>
+              Order is ready for pickup
+            </div>
+          )}
+        </div>
       </div>
-      <br></br>
-      Created at: {createdAtSlice}
-      <br></br>
 
-      {editPrepTime === "inactive" && (
-        <div className="flex flex-col">
-          Prep Time: {order.prepTime}
-          <button
-            className="border-2 border-blue-800 m-1 p-1 rounded-md bg-slate-200 hover:bg-blue-700 hover:text-slate-200"
-            onClick={() => {
-              setEditPrepTime("active")
-            }}
-          >Adjust Prep Time</button>
-        </div>
-
-
-      )}
-
-      {editPrepTime === "active" && (
-        <div>
-          <form
-            onSubmit={savePrepTime}
-          >
-            <label htmlFor="newPrepTime"></label>
-            <input
-              type="number"
-              className="rounded-md border-2 border-blue-800 m-1 p-1"
-              onChange={(event) => {
-                setNewPrepTime(event.target.value)
-              }}
-              value={newPrepTime}
-              id="newPrepTime"
-              name="newPrepTime"
-            ></input>
-            <button
-              className="border-2 border-blue-800 rounded-md p-1 m-1 bg-slate-200"
-              type="submit"
-            >Save</button>
-          </form>
-        </div>
-      )}
-
-      <br></br>
-
-      {orderStatus === "prep" && (
-        <div>
-          Ready for Pickup at: {pickupSlice}
-          <br></br>
-          <button
-            className="border-2 border-blue-800 m-1 p-1 rounded-md bg-slate-200 hover:bg-blue-700 hover:text-slate-200"
-            onClick={orderReady}
-          >Ready for Pickup</button>
-
-        </div>
-      )}
-
-      {orderStatus === "ready-for-pickup" && (
-        <div>
-          Order is ready for pickup
-        </div>
-      )}
 
     </div>
   )

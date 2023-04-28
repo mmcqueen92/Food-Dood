@@ -65,29 +65,31 @@ export default function RestaurantDashboard(props) {
             <div className="text-xl underline">
               {name}
             </div>
-            <div>
+            <div className="m-2">
               Located at: {address}
             </div>
 
           </div>
-          <div>
-            <Link
-              href={{
-                pathname: '/update-restaurant',
-                query: id
-              }}
-            >
-              <button className="border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 m-1 p-1 rounded-md">Update Restaurant</button>
-            </Link>
+          <div className="flex flex-row justify-center">
+
+            <div>
+              <RestaurantActiveOrdersList
+                orders={orders}
+                items={items}
+              ></RestaurantActiveOrdersList>
+            </div>
+            <div>
+              <Link
+                href={{
+                  pathname: '/update-restaurant',
+                  query: id
+                }}
+              >
+                <button className="border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 p-1 mx-5 rounded-md">Update Restaurant</button>
+              </Link>
+            </div>
           </div>
 
-
-          <div>
-            <RestaurantActiveOrdersList
-              orders={orders}
-              items={items}
-            ></RestaurantActiveOrdersList>
-          </div>
 
 
         </div>
