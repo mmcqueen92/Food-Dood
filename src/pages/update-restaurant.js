@@ -154,11 +154,12 @@ export default function UpdateRestaurant(props) {
               <div className="flex flex-row">
                 <form
                   onSubmit={saveName}
+                  className="flex flex-row"
                 >
                   <div>
                     <input
                       type="text"
-                      className="rounded-md border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 my-1"
+                      className="rounded-md border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 my-1 p-1"
                       onChange={(event) => {
                         setName(event.target.value)
                       }}
@@ -169,7 +170,7 @@ export default function UpdateRestaurant(props) {
                   </div>
                   <div>
                     <button
-                      className="border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 rounded-md p-1 m-2"
+                      className="border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 rounded-md p-1 m-1"
                       type="submit"
                     >Save</button>
                   </div>
@@ -183,7 +184,7 @@ export default function UpdateRestaurant(props) {
 
           </div>
 
-          Located at <div>
+          Located at: <div>
 
             {editAddress === "inactive" && (
               <div className="flex flex-row">
@@ -203,11 +204,12 @@ export default function UpdateRestaurant(props) {
               <div className="flex flex-row">
                 <form
                   onSubmit={saveAddress}
+                  className="flex flex-row"
                 >
                   <div>
                     <input
                       type="text"
-                      className="rounded-md border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 my-1"
+                      className="rounded-md border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 my-1 p-1"
                       onChange={(event) => {
                         setAddress(event.target.value)
                       }}
@@ -218,7 +220,7 @@ export default function UpdateRestaurant(props) {
                   </div>
                   <div>
                     <button
-                      className="border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 rounded-md p-1 m-2"
+                      className="border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 rounded-md p-1 m-1"
                       type="submit"
                     >Save</button>
                   </div>
@@ -229,15 +231,13 @@ export default function UpdateRestaurant(props) {
           </div>
           <div className="flex flex-row w-full justify-center">
             <div className="flex flex-col border-2 border-blue-800 rounded-md m-2 p-2 w-3/5 bg-slate-200">
-              <div className="flex flex-row justify-between">
-                <div>
-                  Menu:
-                </div>
-                <div>
-                  <button className="border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 p-2 rounded-md"
-                    onClick={() => { setNewItem("active") }}
-                  >Add New Item to Menu</button>
-                </div>
+              <div className="flex flex-row justify-center text-3xl underline">
+                Menu:
+              </div>
+              <div className="flex flex-row justify-end">
+                <button className="border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 p-2 rounded-md"
+                  onClick={() => { setNewItem("active") }}
+                >Add New Item to Menu</button>
               </div>
 
               <EditMenuList
@@ -314,7 +314,7 @@ export default function UpdateRestaurant(props) {
                     <button
                       className="border-2 border-blue-800 rounded-md p-1 bg-slate-200 hover:bg-blue-700 hover:text-slate-200"
                       onClick={cancelNewItem}
-                      >Cancel
+                    >Cancel
                     </button>
                   </div>
 
