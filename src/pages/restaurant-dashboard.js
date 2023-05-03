@@ -78,14 +78,22 @@ export default function RestaurantDashboard(props) {
                 items={items}
               ></RestaurantActiveOrdersList>
             </div>
-            <div>
+            <div className="flex flex-col">
               <Link
                 href={{
                   pathname: '/update-restaurant',
                   query: id
                 }}
               >
-                <button className="border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 p-1 mx-5 rounded-md">Update Restaurant</button>
+                <button className="border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 p-1 mx-5 mb-1 rounded-md">Update Restaurant</button>
+              </Link>
+              <Link
+                href={{
+                  pathname: '/restaurant-data',
+                  query: id
+                }}
+              >
+                <button className="border-2 border-blue-800 bg-slate-200 hover:bg-blue-700 hover:text-slate-200 p-1 mx-5 mb-1 rounded-md">Data</button>
               </Link>
             </div>
           </div>
