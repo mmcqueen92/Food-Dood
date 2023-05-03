@@ -33,7 +33,8 @@ export default function Checkout() {
   }, [cart])
 
   useEffect(() => {
-    const newGst = totalItemPrice * 0.05;
+    const newGst = Math.trunc(totalItemPrice * 0.05);
+    
     setGst(newGst);
 
   }, [totalItemPrice])
@@ -43,7 +44,7 @@ export default function Checkout() {
 
   const totalPriceDollars = totalPrice / 100;
 
-  const customerGst = (gst / 100).toFixed(2);
+  const customerGst = parseInt((gst / 100).toFixed(2));
 
   const stripeGst = customerGst * 100;
 
