@@ -7,11 +7,9 @@ import axios from "axios"
 
 export async function getServerSideProps() {
   const restaurants = await prisma.restaurant.findMany();
-  const API_KEY = process.env.COORDS_API_KEY
   return {
     props: {
-      restaurants,
-      API_KEY
+      restaurants
     }
   }
 }
@@ -20,22 +18,16 @@ export default function NearbyRestaurants(props) {
   const [restaurants, setRestaurants] = useState(props.restaurants);
   const [location, setLocation] = useState();
   const { address, setAddress } = useContext(AddressContext)
-  const API_KEY = props.API_KEY
 
   const getCoords = () => {
-
-
-    if ('geolocation' in navigator) {
-      // Retrieve latitude & longitude coordinates from `navigator.geolocation` Web API
-      navigator.geolocation.getCurrentPosition(({ coords }) => {
-        const { latitude, longitude } = coords;
-        setLocation({ latitude, longitude });
-        axios.get(`http://api.positionstack.com/v1/reverse?access_key=${API_KEY}&query=${latitude},${longitude}`)
-          .then((res) => {
-            setAddress(res.data.data[0].name)
-          })
-      })
-    }
+    navigator.geolocation.getCurrentPosition(({ coords }) => {
+      const { latitude, longitude } = coords;
+      setLocation({ latitude, longitude });
+      axios.post(`/api/location?lat=${latitude}&long=${longitude}`)
+        .then((res) => {
+          setAddress(res.data.name)
+        })
+    })
   }
 
   return (

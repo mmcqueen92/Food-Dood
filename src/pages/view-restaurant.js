@@ -20,12 +20,11 @@ export async function getServerSideProps({ query }) {
       restaurantId: parsed
     }
   })
-  const API_KEY = process.env.COORDS_API_KEY
+
   return {
     props: {
       restaurant,
-      items,
-      API_KEY
+      items
     }
   }
 }
@@ -34,22 +33,15 @@ export default function ViewRestaurant(props) {
   const { address, setAddress } = useContext(AddressContext)
   const [location, setLocation] = useState();
 
-  const API_KEY = props.API_KEY
-
   const getCoords = () => {
-
-
-    if ('geolocation' in navigator) {
-      // Retrieve latitude & longitude coordinates from `navigator.geolocation` Web API
-      navigator.geolocation.getCurrentPosition(({ coords }) => {
-        const { latitude, longitude } = coords;
-        setLocation({ latitude, longitude });
-        axios.get(`http://api.positionstack.com/v1/reverse?access_key=${API_KEY}&query=${latitude},${longitude}`)
-          .then((res) => {
-            setAddress(res.data.data[0].name)
-          })
-      })
-    }
+    navigator.geolocation.getCurrentPosition(({ coords }) => {
+      const { latitude, longitude } = coords;
+      setLocation({ latitude, longitude });
+      axios.post(`/api/location?lat=${latitude}&long=${longitude}`)
+        .then((res) => {
+          setAddress(res.data.name)
+        })
+    })
   }
 
 

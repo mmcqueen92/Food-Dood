@@ -94,7 +94,7 @@ export default function Profile() {
 
     }
 
-  }, [user])
+  }, [user, orders])
 
 
 
@@ -114,7 +114,7 @@ export default function Profile() {
       <div className="flex flex-col items-center">
         <div className="flex flex-col items-center border-2 border-blue-800 m-5 rounded-md bg-green-400 w-3/5">
           <div className="flex flex-row justify-center border-2 border-blue-800 bg-slate-200 text-xl p-2 m-5 rounded-md">
-            {session.user.name || session.user.email}'s Profile
+            {session.user.name || session.user.email}&#39;s Profile
           </div>
           <div className="flex flex-row p-2 m-2 w-3/5 justify-between">
             <div>

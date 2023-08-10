@@ -21,35 +21,35 @@ Nearby Restaurants -
 
 View Restaurant - 
 
-!["screenshot of the view-restaurant page](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/view-restaurant.png?raw=true)
+!["screenshot of the view-restaurant page"](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/view-restaurant.png?raw=true)
 
 Checkout - 
 
-!["screenshot of the checkout page](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/checkout.png?raw=true)
+!["screenshot of the checkout page"](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/checkout.png?raw=true)
 
 Profile - 
 
-!["screenshot of the profile page](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/profile.png?raw=true)
+!["screenshot of the profile page"](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/profile.png?raw=true)
 
 Owner Dashboard - 
 
-!["screenshot of the owner-dashboard page](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/owner-dashboard.png?raw=true)
+!["screenshot of the owner-dashboard page"](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/owner-dashboard.png?raw=true)
 
 Restaurant Dashboard - 
 
-!["screenshot of the restaurant-dashboard page](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/restaurant-dashboard.png?raw=true)
+!["screenshot of the restaurant-dashboard page"](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/restaurant-dashboard.png?raw=true)
 
 Update Restaurant - 
 
-!["screenshot of the update-restaurant page](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/update-restaurant.png?raw=true)
+!["screenshot of the update-restaurant page"](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/update-restaurant.png?raw=true)
 
 Driver Dashboard - 
 
-!["screenshot of the driver-dashboard page](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/driver-dashboard.png?raw=true)
+!["screenshot of the driver-dashboard page"](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/driver-dashboard.png?raw=true)
 
 Unclaimed Orders - 
 
-!["screenshot of the unclaimed-orders page](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/unclaimed-orders.png?raw=true)
+!["screenshot of the unclaimed-orders page"](https://github.com/mmcqueen92/food-dood/blob/main/public/images/screenshots/unclaimed-orders.png?raw=true)
 
 
 
